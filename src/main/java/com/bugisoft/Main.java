@@ -1,3 +1,4 @@
+package com.bugisoft;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -15,12 +16,12 @@ public class Main {
             Unmarshaller unmarshaller = context.createUnmarshaller();
             //Mi JAXB, me devuelve una clase librería por lo que habrá que castear mi unmarsaller
 
-            Bugisoft bugisoft = (Bugisoft) unmarshaller.unmarshal(new File("src/steam.xml"));
+            Bugisoft bugisoft = (Bugisoft) unmarshaller.unmarshal(new File("src/main/resources/steam.xml"));
 
             ArrayList<Juego> juegoArrayList = bugisoft.getJuegos();
 
             for (Juego juego : juegoArrayList){
-                System.out.println(juego.getNombre());
+                System.out.println(juego.getNombre()+" USA:"+juego.getPrecio().getUsa()+"$ EU:"+juego.getPrecio().getEu()+"€");
             }
         }catch (JAXBException e){
             e.printStackTrace();

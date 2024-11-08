@@ -1,3 +1,4 @@
+package com.bugisoft;
 import javax.xml.bind.annotation.XmlAttribute;
 
 public class Rebaja {

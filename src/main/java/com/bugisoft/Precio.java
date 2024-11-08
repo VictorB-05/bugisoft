@@ -1,24 +1,25 @@
+package com.bugisoft;
 import javax.xml.bind.annotation.XmlAttribute;
 
 public class Precio {
-    private int eu;
-    private int usa;
+    private float eu;
+    private float usa;
 
     @XmlAttribute(name="EU")
-    public int getEu() {
+    public float getEu() {
         return eu;
     }
 
-    public void setEu(int eu) {
+    public void setEu(float eu) {
         this.eu = eu;
     }
 
     @XmlAttribute(name="USA")
-    public int getUsa() {
+    public float getUsa() {
         return usa;
     }
 
-    public void setUsa(int usa) {
+    public void setUsa(float usa) {
         this.usa = usa;
     }
 }
