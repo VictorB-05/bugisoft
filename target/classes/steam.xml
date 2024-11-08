@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE STEAM PUBLIC "IDENT" "steam.dtd">
+<!--<!DOCTYPE STEAM PUBLIC "IDENT" "steam.dtd">-->
 <STEAM>
   <juegos>
     <juego id="J1" nombre="The Witcher 3">
@@ -16,7 +16,7 @@
     </juego>
     
     <juego id="J2" nombre="Phasmophobia">
-      <precio EU="60" USA="80" />
+      <precio EU="19.50" USA="19.99" />
       <fecha anyo ="2020" mes="9" dia="4"/>
       <descripcion>
         Phasmophobia es un videojuego de terror independiente desarrollado y publicado por Kinetic Games.

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE STEAM PUBLIC "IDENT" "steam.dtd">-->
+<STEAM>
+  <juegos>
+    <juego id="J1" nombre="The Witcher 3">
+      <precio EU="60" USA="80" />
+      <fecha anyo ="2015" mes="5" dia="18"/>
+      <descripcion>
+        The Witcher 3: Wild Hunt es un videojuego de rol desarrollado y publicado por la compañía polaca CD Projekt RED.
+      </descripcion>
+      <DLC>
+        <nombre>Blood and Wine</nombre>  
+        <nombre>Heart of Stone</nombre>    
+      </DLC>
+      <rebaja descuento="50"/>
+    </juego>
+    
+    <juego id="J2" nombre="Phasmophobia">
+      <precio EU="19.50" USA="19.99" />
+      <fecha anyo ="2020" mes="9" dia="4"/>
+      <descripcion>
+        Phasmophobia es un videojuego de terror independiente desarrollado y publicado por Kinetic Games.
+      </descripcion>
+      <rebaja descuento="10"/>
+    </juego>
+    
+    <juego id="J3" nombre="Warhammer 40.000: Space Marine 2">
+      <precio EU="60" USA="80" />
+      <fecha anyo ="2024" mes="9" dia="9"/>
+      <descripcion>
+        Warhammer 40.000: Space Marine 2 es un videojuego de disparos en tercera persona hack and slash desarrollado por Sabre Saint Petersburg y publicado por Focus Entertainment.
+      </descripcion>
+      <DLC>
+        <nombre>"Macragge's Expansion Pack"</nombre>      
+      </DLC>
+      <rebaja descuento="0"/>
+    </juego>
+    
+    <juego id="J4" nombre="Age of Empires 2">
+      <precio EU="60" USA="80" />
+      <fecha anyo ="1999" mes="9" dia="27"/>
+      <descripcion>
+        Age of Empires II es un videojuego de estrategia en tiempo real desarrollado por Forgotten Empires y publicado por Xbox Game Studios.
+      </descripcion>
+      <DLC>
+        <nombre>"Rise of the Rajas"</nombre>
+        <nombre>"The Forgotten"</nombre>
+        <nombre>"Dawn of the Dukes"</nombre> 
+        <nombre>"Dynasties of India"</nombre> 
+        <nombre>"Lords of the West"</nombre>
+        <nombre>"Return of Rome"</nombre> 
+        <nombre>"The Mountain Royals"</nombre>
+        <nombre>"Victors and Vanquished"</nombre>
+        <nombre>"The Conqueros"</nombre>                           
+      </DLC>
+      <rebaja descuento="30"/>
+    </juego>
+  </juegos>
+</STEAM>

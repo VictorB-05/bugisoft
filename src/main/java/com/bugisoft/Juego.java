@@ -1,3 +1,4 @@
+package com.bugisoft;
 import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
