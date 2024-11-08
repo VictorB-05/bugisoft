@@ -26,5 +26,12 @@ public class Main {
         }catch (JAXBException e){
             e.printStackTrace();
         }
+
+        try{
+            FuncionalidadesL.menu(args);
+        }catch (JAXBException e){
+            System.out.println("Error al leer el archivo XML: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
