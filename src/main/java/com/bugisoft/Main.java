@@ -16,6 +16,7 @@ public class Main {
             FuncianlidadesV.fechaJuego();
             FuncianlidadesV.rebajaJuego();
 
+
 //            JAXBContext context = JAXBContext.newInstance(Bugisoft.class);
 //            // Creo un objeto que me permita leer el XML
 //            Unmarshaller unmarshaller = context.createUnmarshaller();

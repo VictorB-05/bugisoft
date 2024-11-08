@@ -1,0 +1,17 @@
+<!ELEMENT STEAM (juegos)>
+<!ELEMENT juegos (juego+)>
+<!ELEMENT juego (precio,fecha,descripcion,DLC*, rebaja?)>
+<!ATTLIST juego id ID #REQUIRED >
+<!ATTLIST juego nombre CDATA #REQUIRED >
+<!ELEMENT precio EMPTY>
+<!ATTLIST precio EU CDATA #REQUIRED>
+<!ATTLIST precio USA CDATA #REQUIRED>
+<!ELEMENT fecha EMPTY>
+<!ATTLIST fecha anyo CDATA #REQUIRED >
+<!ATTLIST fecha mes CDATA #REQUIRED >
+<!ATTLIST fecha dia CDATA #REQUIRED >
+<!ELEMENT descripcion ANY>
+<!ELEMENT DLC (nombre+)>
+<!ELEMENT nombre ANY>
+<!ELEMENT rebaja EMPTY>
+<!ATTLIST rebaja descuento CDATA #REQUIRED >

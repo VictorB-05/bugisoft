@@ -29,10 +29,13 @@ public class FuncianlidadesV {
     //mostrar juegos por fecha
     public static void fechaJuego() throws JAXBException {
         ArrayList<Juego> juegos = generarJuegos();
+        //generamos las fechas de los juegos
         for(Juego juego : juegos){
             juego.fechaGenerate();
         }
+        //cogemos cuantos juegos hay
         int limite = juegos.size();
+        // hacemos un for en el cual comaparmos cual es la fecha mayor
         for(int i = 0; i< limite;i++){
             Juego fecha = null;
             for(Juego juego : juegos){
@@ -42,6 +45,7 @@ public class FuncianlidadesV {
                     fecha = juego;
                 }
             }
+            // printeamos el precio y la fecha y removemos el juego de la lista
             System.out.println(fecha.getNombre()+"\t "+fecha.getFechaL()+"\t "+fecha.getPrecio().getEu()+"€");
             juegos.remove(fecha);
         }
@@ -56,7 +60,9 @@ public class FuncianlidadesV {
                juegos.remove(juego);
             }
         }
+        //cogemos cuantos juegos hay
         int limite = juegos.size();
+        // hacemos un for en el cual comaparmos cual es la rebaja mayor
         for(int i = 0; i< limite;i++){
             Juego rebaja = null;
             for(Juego juego : juegos){
@@ -66,6 +72,7 @@ public class FuncianlidadesV {
                     rebaja = juego;
                 }
             }
+            // printeamos el precio y el desucento y removemos el juego de la lista
             float precioD = rebaja.getPrecio().getEu()*rebaja.getRebaja().getDescuento()/100;
             System.out.println(rebaja.getNombre()+"\t "+ rebaja.getPrecio().getEu()+"€\t" + rebaja.getRebaja().getDescuento()
                     +"%\t "+ (precioD)+"€");

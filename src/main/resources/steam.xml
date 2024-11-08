@@ -1,5 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<!--<!DOCTYPE STEAM PUBLIC "IDENT" "steam.dtd">-->
+<!DOCTYPE STEAM[
+<!ELEMENT STEAM (juegos)>
+<!ELEMENT juegos (juego+)>
+<!ELEMENT juego (precio,fecha,descripcion,DLC*, rebaja?)>
+<!ATTLIST juego id ID #REQUIRED >
+<!ATTLIST juego nombre CDATA #REQUIRED >
+<!ELEMENT precio EMPTY>
+<!ATTLIST precio EU CDATA #REQUIRED>
+<!ATTLIST precio USA CDATA #REQUIRED>
+<!ELEMENT fecha EMPTY>
+<!ATTLIST fecha anyo CDATA #REQUIRED >
+<!ATTLIST fecha mes CDATA #REQUIRED >
+<!ATTLIST fecha dia CDATA #REQUIRED >
+<!ELEMENT descripcion ANY>
+<!ELEMENT DLC (nombre+)>
+<!ELEMENT nombre ANY>
+<!ELEMENT rebaja EMPTY>
+<!ATTLIST rebaja descuento CDATA #REQUIRED >]>
 <STEAM>
   <juegos>
     <juego id="J1" nombre="The Witcher 3">
@@ -33,7 +50,6 @@
       <DLC>
         <nombre>"Macragge's Expansion Pack"</nombre>      
       </DLC>
-      <rebaja descuento="0"/>
     </juego>
     
     <juego id="J4" nombre="Age of Empires 2">
