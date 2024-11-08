@@ -2,8 +2,6 @@ package com.bugisoft;
 import javax.xml.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Locale;
 
 @XmlRootElement(name="juego")
 @XmlType(propOrder={"id", "nombre", "precio", "fecha", "descripcion", "DLC", "rebaja"})
@@ -16,6 +14,7 @@ public class Juego {
     private String descripcion;
     private ArrayList<String> DLC;
     private Rebaja rebaja;
+    private LocalDate fechaL;
 
     @XmlAttribute(name="id")
     public String getId() {
@@ -80,4 +79,21 @@ public class Juego {
     public void setRebaja(Rebaja rebaja) {
         this.rebaja = rebaja;
     }
+
+    public boolean dclIsntNull(){
+        return DLC!=null;
+    }
+
+    public void fechaGenerate(){
+        fechaL =  LocalDate.of(getFecha().getAnyo(),getFecha().getMes(),getFecha().getDia());
+    }
+
+    public LocalDate getFechaL() {
+        return fechaL;
+    }
+
+    public boolean rebajaIsNull(){
+        return rebaja==null;
+    }
+
 }
