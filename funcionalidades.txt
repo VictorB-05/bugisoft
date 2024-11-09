@@ -1,0 +1,6 @@
+mostrar catalogo
+mostrar juegos gratis
+mostrar juegos con dlc
+mostrar juegos con rebajas
+mostrar juegos por fecha
+mostrar juegos por precio
