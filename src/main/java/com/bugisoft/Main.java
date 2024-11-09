@@ -11,18 +11,24 @@ public class Main {
 
         //aplicar metodos javax
         try{
-            JAXBContext context = JAXBContext.newInstance(Bugisoft.class);
-            // Creo un objeto que me permita leer el XML
-            Unmarshaller unmarshaller = context.createUnmarshaller();
-            //Mi JAXB, me devuelve una clase librería por lo que habrá que castear mi unmarsaller
 
-            Bugisoft bugisoft = (Bugisoft) unmarshaller.unmarshal(new File("src/main/resources/steam.xml"));
+            FuncianlidadesV.juegosDlc();
+            FuncianlidadesV.fechaJuego();
+            FuncianlidadesV.rebajaJuego();
 
-            ArrayList<Juego> juegoArrayList = bugisoft.getJuegos();
 
-            for (Juego juego : juegoArrayList){
-                System.out.println(juego.getNombre()+" USA:"+juego.getPrecio().getUsa()+"$ EU:"+juego.getPrecio().getEu()+"€");
-            }
+//            JAXBContext context = JAXBContext.newInstance(Bugisoft.class);
+//            // Creo un objeto que me permita leer el XML
+//            Unmarshaller unmarshaller = context.createUnmarshaller();
+//            //Mi JAXB, me devuelve una clase librería por lo que habrá que castear mi unmarsaller
+//
+//            Bugisoft bugisoft = (Bugisoft) unmarshaller.unmarshal(new File("src/main/resources/steam.xml"));
+//
+//            ArrayList<Juego> juegoArrayList = bugisoft.getJuegos();
+//
+//            for (Juego juego : juegoArrayList){
+//                System.out.println(juego.getNombre()+" USA:"+juego.getPrecio().getUsa()+"$ EU:"+juego.getPrecio().getEu()+"€");
+//            }
         }catch (JAXBException e){
             e.printStackTrace();
         }
