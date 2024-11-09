@@ -6,7 +6,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.*;
 
-public class FuncionalidadesL {
+public class Funcionalidades {
 
     public static ArrayList<Juego> generarJuegos() throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(Bugisoft.class);
@@ -20,69 +20,9 @@ public class FuncionalidadesL {
         return juegoArrayList;
     }
 
-    // Menu principal
-    public static void menu(String[] args) throws JAXBException {
 
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Juego> juegos;
-
-        try {
-            juegos = generarJuegos();
-
-        } catch (JAXBException e) {
-            e.printStackTrace();
-            return;
-
-        }
-
-        while (true) {
-
-            System.out.println("\n MENU:");
-            System.out.println("1- Mostrar catálogo");
-            System.out.println("2- Mostrar juegos gratis");
-            System.out.println("3- Mostrar juegos con sus DLC's");
-            System.out.println("4- Mostrar precio con rebaja y su precio original");
-            System.out.println("5- Mostrar fecha de lanzamiento de más nuevo a más antiguo");
-            System.out.println("6- Mostrar precio por DOLLARS o EUROS");
-            System.out.println("7- Salir");
-            System.out.println("Seleccione una opción: ");
-
-            int opcion = scanner.nextInt();
-
-            // Hacemos el Switch para elegir una opcion
-            switch (opcion) {
-
-                case 1:
-                    juegosCatalogo(juegos);
-                    break;
-                case 2:
-                    juegosGratis(juegos);
-                    break;
-                case 3:
-                    juegosDlc(juegos);
-                    break;
-                case 4:
-                    juegosRebaja(juegos);
-                    break;
-                case 5:
-                    juegosFecha(juegos);
-                    break;
-                case 6:
-                    juegosPrecio(juegos);
-                    break;
-                case 7:
-                    System.out.println("Saliendo . . . ");
-                    return;
-                default:
-                    System.out.println("Opción incorrecta. Intentalo de nuevo");
-
-            }
-
-        }
-
-    }
     // Metodo 6 - muestra los juegos ordenados por precios en USD o EURO
-    private static void juegosPrecio(ArrayList<Juego> juegos) {
+    public static void juegosPrecio(ArrayList<Juego> juegos) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Elige la divisa (1- USD, 2- EURO)");
         int moneda = scanner.nextInt();
@@ -106,23 +46,75 @@ public class FuncionalidadesL {
         }
     }
 
-    // Metodo 5 - Muestra los juegos por fecha de lanzamiento, de mas nmuevo a mas antiguo
-    private static void juegosFecha(ArrayList<Juego> juegos) {
-
-    }//
-
-    // Metodo 4- Muestra los juegos con rebajas y su precio original
-    private static void juegosRebaja(ArrayList<Juego> juegos) {
-
+    //mostrar juegos con dlc
+    public static  void juegosDlc(ArrayList<Juego> juegos) throws JAXBException {
+        // pasamos por todos los juegos del array
+        for(Juego juego : juegos){
+            //Miramos si el juego tiene DLC
+            if(juego.dclIsntNull()){
+                System.out.print(juego.getNombre()+"\n DLC:\t");
+                //Y sacas por pantalla el nombre de cada DLC
+                for(String dlc : juego.getDLC()){
+                    System.out.print(dlc+", ");
+                }
+                System.out.println("");
+            }
+        }
+    }
+    //mostrar juegos por fecha
+    public static void juegosFecha(ArrayList<Juego> juegos) throws JAXBException {
+        //generamos las fechas de los juegos
+        for(Juego juego : juegos){
+            juego.fechaGenerate();
+        }
+        //cogemos cuantos juegos hay
+        int limite = juegos.size();
+        // hacemos un for en el cual comaparmos cual es la fecha mayor
+        for(int i = 0; i< limite;i++){
+            Juego fecha = null;
+            for(Juego juego : juegos){
+                if(fecha == null){
+                    fecha = juego;
+                } else if (!fecha.getFechaL().isAfter(juego.getFechaL())) {
+                    fecha = juego;
+                }
+            }
+            // printeamos el precio y la fecha y removemos el juego de la lista
+            System.out.println(fecha.getNombre()+"\t "+fecha.getFechaL()+"\t "+fecha.getPrecio().getEu()+"€");
+            juegos.remove(fecha);
+        }
     }
 
-    // Metodo 3 - Muestra los juegos con sus DLC's
-    private static void juegosDlc(ArrayList<Juego> juegos) {
-
+    //mostrar juegos con rebajas
+    public static void juegosRebaja(ArrayList<Juego> juegos) throws JAXBException {
+        for(Juego juego : juegos){
+            //Miramos si el juego tiene rebaja
+            if(juego.rebajaIsNull()){
+                juegos.remove(juego);
+            }
+        }
+        //cogemos cuantos juegos hay
+        int limite = juegos.size();
+        // hacemos un for en el cual comaparmos cual es la rebaja mayor
+        for(int i = 0; i< limite;i++){
+            Juego rebaja = null;
+            for(Juego juego : juegos){
+                if(rebaja == null){
+                    rebaja = juego;
+                } else if (rebaja.getRebaja().getDescuento()<juego.getRebaja().getDescuento()) {
+                    rebaja = juego;
+                }
+            }
+            // printeamos el precio y el desucento y removemos el juego de la lista
+            float precioD = rebaja.getPrecio().getEu()*rebaja.getRebaja().getDescuento()/100;
+            System.out.println(rebaja.getNombre()+"\t "+ rebaja.getPrecio().getEu()+"€\t" + rebaja.getRebaja().getDescuento()
+                    +"%\t "+ (precioD)+"€");
+            juegos.remove(rebaja);
+        }
     }
 
     // Metodo 2 - Muestra los juegos que esten gratuitos
-    private static void juegosGratis(ArrayList<Juego> juegos) {
+    public static void juegosGratis(ArrayList<Juego> juegos) {
         // For each por el cual recorre los juegos del archivo XML e imprime por pantalla
         // aquellos que tienen tanto el precio en USD y EUR igual a 0
         for (Juego juego : juegos) {

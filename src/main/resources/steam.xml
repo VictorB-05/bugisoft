@@ -71,5 +71,11 @@
       </DLC>
       <rebaja descuento="30"/>
     </juego>
+    <juego id="J5" nombre="counter strike 2">
+      <precio EU="0" USA="0" />
+      <fecha anyo ="2012" mes="8" dia="21"/>
+      <descripcion>
+        Durante las dos últimas décadas, Counter‑Strike ha proporcionado una experiencia competitiva de primer nivel para los millones de jugadores de todo el mundo que contribuyeron a darle forma. Ahora el próximo capítulo en la historia de CS está a punto de comenzar. Hablamos de Counter‑Strike 2.      </descripcion>
+    </juego>
   </juegos>
 </STEAM>

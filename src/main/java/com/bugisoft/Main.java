@@ -1,43 +1,61 @@
 package com.bugisoft;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    // Menu principal
+    public static void main(String[] args) throws JAXBException {
 
-        //aplicar metodos javax
-        try{
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Juego> juegos;
 
-            FuncianlidadesV.juegosDlc();
-            FuncianlidadesV.fechaJuego();
-            FuncianlidadesV.rebajaJuego();
+        while (true) {
 
+            System.out.println("\n MENU:");
+            System.out.println("1- Mostrar catálogo");
+            System.out.println("2- Mostrar juegos gratis");
+            System.out.println("3- Mostrar juegos con sus DLC's");
+            System.out.println("4- Mostrar precio con rebaja y su precio original");
+            System.out.println("5- Mostrar fecha de lanzamiento de más nuevo a más antiguo");
+            System.out.println("6- Mostrar precio por DOLLARS o EUROS");
+            System.out.println("7- Salir");
+            System.out.println("Seleccione una opción: ");
 
-//            JAXBContext context = JAXBContext.newInstance(Bugisoft.class);
-//            // Creo un objeto que me permita leer el XML
-//            Unmarshaller unmarshaller = context.createUnmarshaller();
-//            //Mi JAXB, me devuelve una clase librería por lo que habrá que castear mi unmarsaller
-//
-//            Bugisoft bugisoft = (Bugisoft) unmarshaller.unmarshal(new File("src/main/resources/steam.xml"));
-//
-//            ArrayList<Juego> juegoArrayList = bugisoft.getJuegos();
-//
-//            for (Juego juego : juegoArrayList){
-//                System.out.println(juego.getNombre()+" USA:"+juego.getPrecio().getUsa()+"$ EU:"+juego.getPrecio().getEu()+"€");
-//            }
-        }catch (JAXBException e){
-            e.printStackTrace();
-        }
+            int opcion = scanner.nextInt();
+            try {
+                juegos = Funcionalidades.generarJuegos();
+                // Hacemos el Switch para elegir una opcion
+                switch (opcion) {
 
-        try{
-            FuncionalidadesL.menu(args);
-        }catch (JAXBException e){
-            System.out.println("Error al leer el archivo XML: " + e.getMessage());
-            e.printStackTrace();
+                    case 1:
+                        Funcionalidades.juegosCatalogo(juegos);
+                        break;
+                    case 2:
+                        Funcionalidades.juegosGratis(juegos);
+                        break;
+                    case 3:
+                        Funcionalidades.juegosDlc(juegos);
+                        break;
+                    case 4:
+                        Funcionalidades.juegosRebaja(juegos);
+                        break;
+                    case 5:
+                        Funcionalidades.juegosFecha(juegos);
+                        break;
+                    case 6:
+                        Funcionalidades.juegosPrecio(juegos);
+                        break;
+                    case 7:
+                        System.out.println("Saliendo . . . ");
+                        return;
+                    default:
+                        System.out.println("Opción incorrecta. Intentalo de nuevo");
+
+                }
+            } catch (JAXBException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
