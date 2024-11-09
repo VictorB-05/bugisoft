@@ -88,18 +88,24 @@ public class Funcionalidades {
 
     //mostrar juegos con rebajas
     public static void juegosRebaja(ArrayList<Juego> juegos) throws JAXBException {
-        for (Juego juego : juegos) {
-            //Miramos si el juego tiene rebaja
-            if (juego.rebajaIsNull()) {
-                juegos.remove(juego);
+        //Creamos un iterador del arraylist y un arraylist auxiliar
+        ArrayList<Juego> juegoArrayList = new ArrayList();
+        Iterator<Juego> iterator = juegos.iterator();
+        //recorremos el iterador
+        while (iterator.hasNext()) {
+            Juego juego = iterator.next();
+            // Miramos si el juego tiene rebaja
+            if (juego.rebajaIsntNull()) {
+                //y si la tiene lo metemos
+                juegoArrayList.add(juego);
             }
         }
         //cogemos cuantos juegos hay
-        int limite = juegos.size();
+        int limite = juegoArrayList.size();
         // hacemos un for en el cual comparamos cual es la rebaja mayor
         for (int i = 0; i < limite; i++) {
             Juego rebaja = null;
-            for (Juego juego : juegos) {
+            for (Juego juego : juegoArrayList) {
                 if (rebaja == null) {
                     rebaja = juego;
                 } else if (rebaja.getRebaja().getDescuento() < juego.getRebaja().getDescuento()) {
@@ -110,7 +116,7 @@ public class Funcionalidades {
             float precioD = rebaja.getPrecio().getEu() * rebaja.getRebaja().getDescuento() / 100;
             System.out.println(rebaja.getNombre() + "\t " + rebaja.getPrecio().getEu() + "€\t" + rebaja.getRebaja().getDescuento()
                     + "%\t " + (precioD) + "€");
-            juegos.remove(rebaja);
+            juegoArrayList.remove(rebaja);
         }
     }
 

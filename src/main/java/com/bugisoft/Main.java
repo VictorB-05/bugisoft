@@ -2,6 +2,7 @@ package com.bugisoft;
 import javax.xml.bind.JAXBException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ConcurrentModificationException;
 
 public class Main {
     // Menu principal
@@ -54,6 +55,8 @@ public class Main {
 
                 }
             } catch (JAXBException e) {
+                e.printStackTrace();
+            } catch (ConcurrentModificationException e) {
                 e.printStackTrace();
             }
         }

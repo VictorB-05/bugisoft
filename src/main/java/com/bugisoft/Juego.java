@@ -92,8 +92,8 @@ public class Juego {
         return fechaL;
     }
 
-    public boolean rebajaIsNull(){
-        return rebaja==null;
+    public boolean rebajaIsntNull(){
+        return rebaja!=null;
     }
 
 }
